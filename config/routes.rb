@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+
+  get 'welcome/about'
+  
+  # The root method allows us to declare the default page the app loads when we navigate to the home page URL
+  root 'welcome#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
