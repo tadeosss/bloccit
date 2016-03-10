@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'welcome/about'
   
+  get 'welcome/faq'
+  
   # The root method allows us to declare the default page the app loads when we navigate to the home page URL
   root 'welcome#index'
 
