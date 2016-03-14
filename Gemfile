@@ -13,6 +13,7 @@ ruby '2.3.0' #Fixes Ruby version to a specific version
  # #2
  group :development do
    gem 'sqlite3'
+   gem 'pry-rails'
  end
  
  group :development, :test do
