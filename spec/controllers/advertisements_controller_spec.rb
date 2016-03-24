@@ -59,7 +59,11 @@ RSpec.describe AdvertisementsController, type: :controller do
   
   describe "POST create" do
     it "increases the number of advertisements by 1" do
+<<<<<<< HEAD
       expect{post :create, advertisement: {title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: 99}}.to(change(Advertisement,:count).by(1))
+=======
+      expect{post :create, advertisement: {title: RandomData.random_sentence, copy: RandomData.random_paragraph, price: 99}}.to change(Advertisement,:count).by(1)
+>>>>>>> origin/xm_32_assignment
     end
   
     it "assigns the new advertisement to @advertisement" do
