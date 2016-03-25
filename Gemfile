@@ -18,6 +18,7 @@ ruby '2.3.0' #Fixes Ruby version to a specific version
  
  group :development, :test do
    gem 'rspec-rails', '~> 3.0'
+   gem 'shoulda'
  end
  
  # Use SCSS for stylesheets
