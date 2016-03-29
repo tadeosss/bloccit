@@ -35,11 +35,10 @@ puts "#{Comment.count} comments created"
   SponsoredPost.create!(
     topic: topics.sample,
     title: RandomData.random_sentence,
-    body: RandomData.random_paragraph,
-    price: RandomData.random_number
+    body: RandomData.random_paragraph
     )
 end
 posts = SponsoredPost.all
-puts "#{SponsoredPost.count} posts created"
+puts "#{SponsoredPost.count} sponsored posts created"
 
 puts "Seed finished"
