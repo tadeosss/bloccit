@@ -13,12 +13,15 @@ ruby '2.3.0' #Fixes Ruby version to a specific version
  # #2
  group :development do
    gem 'sqlite3'
-   gem 'pry-rails'
  end
  
  group :development, :test do
    gem 'rspec-rails', '~> 3.0'
-   gem 'shoulda'
+   gem 'shoulda-matchers', '~> 3.1'
+   gem 'pry-rails'
+   gem 'pry-byebug'
+   gem 'better_errors'
+   gem 'binding_of_caller'
  end
  
  # Use SCSS for stylesheets
