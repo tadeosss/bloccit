@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   def new
     @topic = Topic.find(params[:topic_id])
     @post = Post.new
+    #@post.topic = @topic
   end
 
   def create
@@ -27,6 +28,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @topic = @post.topic
   end
   
   def update
