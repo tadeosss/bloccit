@@ -10,7 +10,6 @@ RSpec.describe Topic, type: :model do
 
   describe 'associations' do # Using Shoulda matchers http://matchers.shoulda.io/docs/v3.1.1/
     it { should have_many(:posts).dependent(:destroy) }
-    it { should have_many(:sponsored_posts).dependent(:destroy) }
   end
   
 end
