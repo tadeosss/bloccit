@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   # Documentation for Shoulda matchers http://matchers.shoulda.io/docs/v3.1.1/
+  
 
   describe "attributes" do
     it { should have_db_column(:name).of_type(:string) }
@@ -21,6 +22,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of(:password) }
     it { is_expected.to have_secure_password }
     it { is_expected.to validate_length_of(:password).is_at_least(6) }
+    it { is_expected.to have_many(:posts)}
   end
 
 end
