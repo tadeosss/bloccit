@@ -2,12 +2,49 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
+  let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
+
   # Documentation for Shoulda matchers http://matchers.shoulda.io/docs/v3.1.1/
   
-
   describe "attributes" do
     it { should have_db_column(:name).of_type(:string) }
     it { should have_db_column(:email).of_type(:string) }
+    it { should respond_to(:role) }
+    it { should respond_to(:admin?) }
+    it { should respond_to(:member?) }
+  end
+    
+  # Not sure what the equivalent are for these RSpec to Shoulda Matchers...
+
+  describe "roles" do
+
+    it "is member by default" do
+      expect(user.role).to eql("member")
+    end
+ 
+    context "member user" do
+      it "returns true for #member?" do
+        expect(user.member?).to be_truthy
+      end
+ 
+      it "returns false for #admin?" do
+        expect(user.admin?).to be_falsey
+      end
+    end
+ 
+    context "admin user" do
+      before do
+        user.admin!
+      end
+ 
+      it "returns false for #member?" do
+        expect(user.member?).to be_falsey
+      end
+ 
+      it "returns true for #admin?" do
+        expect(user.admin?).to be_truthy
+      end
+    end
   end
 
   describe 'validations' do
@@ -17,6 +54,8 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of(:email) }
     it { should validate_uniqueness_of(:email).case_insensitive }
     it { is_expected.to validate_length_of(:email).is_at_least(3) }
+    
+    #I think this test is not a proper shoulda matcher test
     it { is_expected.to allow_value("user@bloccit.com").for(:email) }
 
     it { is_expected.to validate_presence_of(:password) }
@@ -24,5 +63,5 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_length_of(:password).is_at_least(6) }
     it { is_expected.to have_many(:posts)}
   end
-
+   
 end

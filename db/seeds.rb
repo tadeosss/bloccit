@@ -42,10 +42,18 @@ puts "#{Post.count} posts created"
 end
 puts "#{Comment.count} comments created"
 
-user = User.first
-user.update_attributes!(
-  email: 'stadeo17@yahoo.com',
+# Create admin user
+admin = User.create!(
+  name: 'Admin User',
+  email: 'admin@example.com',
+  password: 'helloworld',
+  role: 'admin'
+)
+
+member = User.create!(
+  name: 'Member User',
+  email: 'member@example.com',
   password: 'helloworld'
-  )
+)
 
 puts "Seed finished"
