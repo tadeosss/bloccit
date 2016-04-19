@@ -6,10 +6,12 @@
 <% end %>
 
 <div class="row">
-	<p class="lead"><%= @topic.description %></p>
-<hr />
-	
 	<div class="col-md-8">
+		<p class="lead">
+			<%= render partial: "labels/list", locals: { labels: @topic.labels } %>
+			<br />
+			<%= @topic.description %>
+		</p>
 		<h2>POSTS</h2>
 		<% @topic.posts.each do |post| %>
 			<div class="media">

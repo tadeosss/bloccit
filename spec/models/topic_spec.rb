@@ -10,6 +10,8 @@ RSpec.describe Topic, type: :model do
 
   describe 'associations' do # Using Shoulda matchers http://matchers.shoulda.io/docs/v3.1.1/
     it { should have_many(:posts).dependent(:destroy) }
+    it { should have_many(:labelings) }
+    it { should have_many(:labels).through(:labelings) }
   end
   
 end
