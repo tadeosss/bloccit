@@ -8,7 +8,26 @@ require 'random_data'
     password: RandomData.random_sentence
     )
 end
+
+# Create admin user
+unless User.find_by(email: 'admin@example.com')
+  User.create!(
+    name: 'Admin User',
+    email: 'admin@example.com',
+    password: 'helloworld',
+    role: 'admin'
+  )
+end
+
+unless User.find_by(email: 'member@example.com')
+  User.create!(
+    name: 'Member User',
+    email: 'member@example.com',
+    password: 'helloworld'
+  )
+end
 users = User.all
+
 puts "#{User.count} users created"
 
 # Create Topics
@@ -43,18 +62,5 @@ puts "#{Post.count} posts created"
 end
 puts "#{Comment.count} comments created"
 
-# Create admin user
-admin = User.create!(
-  name: 'Admin User',
-  email: 'admin@example.com',
-  password: 'helloworld',
-  role: 'admin'
-)
-
-member = User.create!(
-  name: 'Member User',
-  email: 'member@example.com',
-  password: 'helloworld'
-)
 
 puts "Seed finished"
