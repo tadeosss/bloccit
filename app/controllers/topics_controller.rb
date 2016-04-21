@@ -13,7 +13,12 @@ class TopicsController < ApplicationController
   end
 
   def new
-    @topic = Topic.new
+    if current_user.moderator?
+      flash[:error] = "You must be an admin to do that."
+      redirect_to topics_path
+    else
+      @topic = Topic.new
+    end
   end
 
   def create
@@ -45,9 +50,12 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    @topic = Topic.find(params[:id])
-    
-    if @topic.destroy
+    if current_user.moderator?
+      flash[:error] = "You must be an admin to do that."
+      redirect_to topics_path
+    elsif
+      @topic = Topic.find(params[:id])
+    elsif @topic.destroy
       flash[:notice] = "\"#{@topic.name}\" was deleted successfully."
       redirect_to action: :index
     else
