@@ -4,9 +4,11 @@ RSpec.describe Comment, type: :model do
   
   let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
   let(:post) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user) }
-  let(:comment) { Comment.create!(body: 'Comment Body', post: post, user: user) }
+  let(:comment) { Comment.create!(body: 'Comment Body', post: post, user: user, topic: topic) }
+
     it { is_expected.to belong_to(:post) }
     it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:topic) }
     it { is_expected.to validate_presence_of(:body) }
     it { is_expected.to validate_length_of(:body).is_at_least(5) }
 
@@ -16,6 +18,7 @@ RSpec.describe Comment, type: :model do
   
   describe 'associations' do # Using Shoulda matchers http://matchers.shoulda.io/docs/v3.1.1/
     it { should belong_to(:post) }
+    it { should belong_to(:topic) }
   end
 
 end

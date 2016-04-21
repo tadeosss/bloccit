@@ -38,6 +38,7 @@ puts "#{Post.count} posts created"
   Comment.create!(
     user: users.sample,
     post: posts.sample,
+    topic: topics.sample,
     body: RandomData.random_paragraph
     )
 end

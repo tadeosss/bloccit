@@ -12,6 +12,7 @@ RSpec.describe Topic, type: :model do
     it { should have_many(:posts).dependent(:destroy) }
     it { should have_many(:labelings) }
     it { should have_many(:labels).through(:labelings) }
+    it { should have_many(:comments).dependent(:destroy) }
   end
   
 end

@@ -15,6 +15,21 @@ class CommentsController < ApplicationController
        flash[:alert] = "Comment failed to save."
        redirect_to [@post.topic, @post]
      end
+     
+   end
+   
+   def create_
+     @topic = Topic.find(params[:topic_id])
+     comment = @topic.comments.new(comment_params)
+     comment.user = current_user
+ 
+     if comment.save
+       flash[:notice] = "Comment saved successfully."
+       redirect_to [@topic]
+     else
+       flash[:alert] = "Comment failed to save."
+       redirect_to [@topic]
+     end
    end
    
     def destroy
