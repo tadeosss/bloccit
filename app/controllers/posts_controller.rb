@@ -46,11 +46,10 @@ class PostsController < ApplicationController
   end
   
   def destroy
-    if current_user.moderator?
+    @post = Post.find(params[:id])
+    if current_user.moderator? && @post.user != current_user
       flash[:error] = "You must be an admin or to do that."
       redirect_to topics_path
-    elsif
-      @post = Post.find(params[:id])
     elsif @post.destroy
       flash[:notice] = "\"#{@post.title}\" was deleted successfully."
       redirect_to @post.topic
