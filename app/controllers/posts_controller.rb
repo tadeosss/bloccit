@@ -1,14 +1,16 @@
 class PostsController < ApplicationController
-  
+  include AuthorizePost
   before_action :require_sign_in, except: :show
 
   def show
     @post = Post.find(params[:id])
+    authorize_user(:can_show_post?)
   end
 
   def new
     @topic = Topic.find(params[:topic_id])
     @post = Post.new
+    authorize_user(:can_new_post?)
   end
 
   def create
@@ -28,11 +30,13 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @topic = @post.topic
+    authorize_user(:can_edit_post?, @post)
   end
   
   def update
     @post = Post.find(params[:id])
     @post.assign_attributes(post_params)
+    authorize_user(:can_update_post?, @post)
 
     if @post.save
       flash[:notice] = "Post was updated."
@@ -55,10 +59,12 @@ class PostsController < ApplicationController
     end
   end
   
+  
   private
  
   def post_params
     params.require(:post).permit(:title, :body)
   end
+  
    
 end
