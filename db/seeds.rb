@@ -37,8 +37,17 @@ puts "#{Post.count} posts created"
 100.times do
   Comment.create!(
     user: users.sample,
-    post: posts.sample,
     topic: topics.sample,
+    body: RandomData.random_paragraph
+    )
+end
+puts "#{Comment.count} comments created"
+
+# Create Comments
+100.times do
+  Comment.create!(
+    user: users.sample,
+    post: posts.sample,
     body: RandomData.random_paragraph
     )
 end
