@@ -6,16 +6,49 @@ require 'random_data'
     name: RandomData.random_name,
     email: RandomData.random_email,
     password: RandomData.random_sentence
-    )
+  )
+end
+
+# Create admin user
+unless User.find_by(email: 'admin@example.com')
+  User.create!(
+    name: 'Admin User',
+    email: 'admin@example.com',
+    password: 'helloworld',
+    role: 'admin'
+  )
+end
+
+unless User.find_by(email: 'member@example.com')
+  User.create!(
+    name: 'Member User',
+    email: 'member@example.com',
+    password: 'helloworld'
+  )
 end
 users = User.all
+
 puts "#{User.count} users created"
+
+#Create Labels
+unless Label.all.any?
+  label_names = %w(rogue red gold viper wolf bandit yellow blade blue dantooine)
+  label_names.each do |label_name|
+    Label.create!(
+      name: label_name
+      )
+  end
+end
+labels = Label.all
+puts "#{Label.count} comments created"
+
 
 # Create Topics
 15.times do
  Topic.create!(
    name:         RandomData.random_sentence,
-   description:  RandomData.random_paragraph
+   description:  RandomData.random_paragraph,
+   labels: labels.sample(rand(0..5))
  )
 end
 topics = Topic.all
@@ -27,7 +60,8 @@ puts "#{Topic.count} topics created"
     user: users.sample,
     topic: topics.sample,
     title: RandomData.random_sentence,
-    body: RandomData.random_paragraph
+    body: RandomData.random_paragraph,
+    labels: labels.sample(rand(0..5))
     )
 end
 posts = Post.all
@@ -43,6 +77,7 @@ puts "#{Post.count} posts created"
 end
 puts "#{Comment.count} comments created"
 
+<<<<<<< HEAD
 # Create admin user
 admin = User.create!(
   name: 'Admin User',
@@ -63,5 +98,7 @@ member = User.create!(
   email: 'member@example.com',
   password: 'helloworld'
 )
+=======
+>>>>>>> origin/42_checkpoint
 
 puts "Seed finished"
