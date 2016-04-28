@@ -77,28 +77,6 @@ puts "#{Post.count} posts created"
 end
 puts "#{Comment.count} comments created"
 
-<<<<<<< HEAD
-# Create admin user
-admin = User.create!(
-  name: 'Admin User',
-  email: 'admin@example.com',
-  password: 'helloworld',
-  role: 'admin'
-)
 
-moderator = User.create!(
-  name: 'Moderator User',
-  email: 'moderator@example.com',
-  password: 'helloworld',
-  role: 'moderator'
-)
-
-member = User.create!(
-  name: 'Member User',
-  email: 'member@example.com',
-  password: 'helloworld'
-)
-=======
->>>>>>> origin/42_checkpoint
 
 puts "Seed finished"
