@@ -40,7 +40,7 @@ unless Label.all.any?
   end
 end
 labels = Label.all
-puts "#{Label.count} comments created"
+puts "#{Label.count} labels created"
 
 
 # Create Topics
