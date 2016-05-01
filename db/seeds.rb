@@ -42,7 +42,6 @@ end
 labels = Label.all
 puts "#{Label.count} labels created"
 
-
 # Create Topics
 15.times do
  Topic.create!(
@@ -61,7 +60,7 @@ puts "#{Topic.count} topics created"
     topic: topics.sample,
     title: RandomData.random_sentence,
     body: RandomData.random_paragraph,
-    labels: labels.sample(rand(0..5))
+    labels: labels.sample(rand(0..15))
     )
   post.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
   rand(1..5).times { post.votes.create!(value: [-1, 1].sample, user: users.sample) }
