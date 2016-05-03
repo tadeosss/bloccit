@@ -10,6 +10,7 @@ RSpec.describe Post, type: :model do
 	it { is_expected.to have_many(:labels).through(:labelings) }
 	it { is_expected.to have_many(:comments) }
 	it { is_expected.to have_many(:votes) }
+	it { is_expected.to have_many(:favorites) }
 		
   describe "attributes" do # Using Shoulda matchers http://matchers.shoulda.io/docs/v3.1.1/
     it { should have_db_column(:title).of_type(:string) }
