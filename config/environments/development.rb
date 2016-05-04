@@ -41,4 +41,7 @@ Rails.application.configure do
   
   config.action_mailer.default_url_options = { host: 'https://bloccit-tadeosss.c9users.io' }
   
+  # Raises error for failed ActionMailer
+  config.raise_delivery_errors = true
+  
 end

@@ -37,3 +37,5 @@ ruby '2.3.0' #Fixes Ruby version to a specific version
  gem 'bootstrap-sass'
  # Used for encrypting User passwords
  gem 'bcrypt'
+ # Used for storing API keys and passwords
+ gem 'figaro', '1.0'
