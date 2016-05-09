@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
 
-  let(:topic) { Topic.create!(name: RandomData.random_sentence, description: RandomData.random_paragraph) }
-  let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
-  let(:post) { topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: user) }
+  let(:topic) { create(:topic) }
+  let(:user) { create(:user) }
+  let(:post) { create(:post) }
 
 	it { is_expected.to have_many(:labelings) }
 	it { is_expected.to have_many(:labels).through(:labelings) }
@@ -16,6 +16,8 @@ RSpec.describe Post, type: :model do
     it { should have_db_column(:title).of_type(:string) }
     it { should have_db_column(:body).of_type(:text) }
 
+    # I guess below line (from Checkpoint 45) is RSpec syntax and equivalent to Shoulda specs above?
+    # expect(post).to have_attributes(title: post.title, body: post.body)
   end
   
   describe 'associations' do # Using Shoulda matchers http://matchers.shoulda.io/docs/v3.1.1/
