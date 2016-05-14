@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   
-   let(:topic) { create(:topic) }
-   let(:user) { create(:user) }
-   let(:post) { create(:post) }
-   let(:comment) { Comment.create!(body: 'Comment Body', post: post, user: user) }
+  let(:topic) { create(:topic) }
+  let(:user) { create(:user) }
+  let(:post) { create(:post) }
+  let(:comment) { create(:comment)}
   
   describe "attributes" do # Using Shoulda matchers http://matchers.shoulda.io/docs/v3.1.1/
     it { should have_db_column(:body).of_type(:text) }
