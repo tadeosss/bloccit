@@ -47,10 +47,12 @@ puts "#{Label.count} labels created"
  Topic.create!(
    name:         RandomData.random_sentence,
    description:  RandomData.random_paragraph,
+   public: rand(1..4) != 1,
    labels: labels.sample(rand(0..5))
  )
 end
 topics = Topic.all
+puts "#{Topic.where(public: false).count} private topics created"
 puts "#{Topic.count} topics created"
 
 # Create Posts
